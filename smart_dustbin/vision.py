@@ -157,3 +157,15 @@ class RedTrashDetector:
         self.last_detection = (cx, cy)
         self.last_area = area
         return (cx, cy)
+
+
+def locate_zone(frame, detector, zone_manager):
+    """What the live loop decides for one frame: the red object's centre and the zone it is in.
+
+    Returns (position, zone). `position` is None when nothing red is big enough; `zone` is None when the object is in a gap
+    between zones (or when there is no object). Only a non-None zone makes the bin move.
+    """
+    position = detector.detect_red(frame)
+    if position is None:
+        return None, None
+    return position, zone_manager.get_zone_for_position(*position)
