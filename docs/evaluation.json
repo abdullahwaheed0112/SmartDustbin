@@ -1,0 +1,194 @@
+{
+  "seed": 42,
+  "scenes_per_condition": 100,
+  "frame": [
+    640,
+    480
+  ],
+  "conditions": [
+    {
+      "condition": "clean scene",
+      "description": "red trash in a random zone, good light",
+      "n": 100,
+      "original": {
+        "accuracy": 0.99,
+        "trigger_rate": 0.99,
+        "mean_centroid_error_px": 0.11356202714261902
+      },
+      "keepout": {
+        "accuracy": 0.99,
+        "trigger_rate": 0.99,
+        "mean_centroid_error_px": 0.11356202714261902
+      }
+    },
+    {
+      "condition": "dim light",
+      "description": "image 45-80% as bright",
+      "n": 100,
+      "original": {
+        "accuracy": 0.98,
+        "trigger_rate": 0.98,
+        "mean_centroid_error_px": 0.15976381887237123
+      },
+      "keepout": {
+        "accuracy": 0.98,
+        "trigger_rate": 0.98,
+        "mean_centroid_error_px": 0.15976381887237123
+      }
+    },
+    {
+      "condition": "glare",
+      "description": "10-35% washed out towards white",
+      "n": 100,
+      "original": {
+        "accuracy": 0.83,
+        "trigger_rate": 0.83,
+        "mean_centroid_error_px": 0.8757688240499908
+      },
+      "keepout": {
+        "accuracy": 0.83,
+        "trigger_rate": 0.83,
+        "mean_centroid_error_px": 0.8757688240499908
+      }
+    },
+    {
+      "condition": "sensor noise",
+      "description": "Gaussian noise (sigma 8-20) plus 0.5% salt-and-pepper",
+      "n": 100,
+      "original": {
+        "accuracy": 0.81,
+        "trigger_rate": 0.81,
+        "mean_centroid_error_px": 1.1895159093142575
+      },
+      "keepout": {
+        "accuracy": 0.81,
+        "trigger_rate": 0.81,
+        "mean_centroid_error_px": 1.1895159093142575
+      }
+    },
+    {
+      "condition": "motion blur",
+      "description": "9-21 pixel horizontal smear",
+      "n": 100,
+      "original": {
+        "accuracy": 0.97,
+        "trigger_rate": 0.97,
+        "mean_centroid_error_px": 0.41560524225757484
+      },
+      "keepout": {
+        "accuracy": 0.97,
+        "trigger_rate": 0.97,
+        "mean_centroid_error_px": 0.41560524225757484
+      }
+    },
+    {
+      "condition": "trash among look-alikes",
+      "description": "red trash plus orange, brown, skin-tone, pink or dark-red objects",
+      "n": 100,
+      "original": {
+        "accuracy": 0.97,
+        "trigger_rate": 0.97,
+        "mean_centroid_error_px": 0.1407923118504369
+      },
+      "keepout": {
+        "accuracy": 0.97,
+        "trigger_rate": 0.97,
+        "mean_centroid_error_px": 0.1407923118504369
+      }
+    },
+    {
+      "condition": "two red objects",
+      "description": "the larger one should win",
+      "n": 100,
+      "original": {
+        "accuracy": 0.99,
+        "trigger_rate": 0.99,
+        "mean_centroid_error_px": 0.1707019690566835
+      },
+      "keepout": {
+        "accuracy": 0.99,
+        "trigger_rate": 0.99,
+        "mean_centroid_error_px": 0.1707019690566835
+      }
+    },
+    {
+      "condition": "look-alikes only",
+      "description": "no trash: should do nothing",
+      "n": 100,
+      "original": {
+        "accuracy": 1.0,
+        "trigger_rate": 0.0,
+        "mean_centroid_error_px": null
+      },
+      "keepout": {
+        "accuracy": 1.0,
+        "trigger_rate": 0.0,
+        "mean_centroid_error_px": null
+      }
+    },
+    {
+      "condition": "orange-red look-alikes",
+      "description": "no trash; hue right at the edge of the accepted range",
+      "n": 100,
+      "original": {
+        "accuracy": 0.7,
+        "trigger_rate": 0.3,
+        "mean_centroid_error_px": null
+      },
+      "keepout": {
+        "accuracy": 0.72,
+        "trigger_rate": 0.28,
+        "mean_centroid_error_px": null
+      }
+    },
+    {
+      "condition": "small trash",
+      "description": "area 200-380 px^2, below the 500 px^2 minimum",
+      "n": 100,
+      "original": {
+        "accuracy": 0.0,
+        "trigger_rate": 0.0,
+        "mean_centroid_error_px": null
+      },
+      "keepout": {
+        "accuracy": 0.0,
+        "trigger_rate": 0.0,
+        "mean_centroid_error_px": null
+      }
+    },
+    {
+      "condition": "trash outside every zone",
+      "description": "should do nothing",
+      "n": 100,
+      "original": {
+        "accuracy": 1.0,
+        "trigger_rate": 0.0,
+        "mean_centroid_error_px": 0.1448528137423857
+      },
+      "keepout": {
+        "accuracy": 1.0,
+        "trigger_rate": 0.0,
+        "mean_centroid_error_px": 0.1448528137423857
+      }
+    },
+    {
+      "condition": "red mark on the car",
+      "description": "30 x 30 px red patch on the robot, no trash: should do nothing",
+      "n": 100,
+      "original": {
+        "accuracy": 0.0,
+        "trigger_rate": 1.0,
+        "mean_centroid_error_px": null
+      },
+      "keepout": {
+        "accuracy": 1.0,
+        "trigger_rate": 0.0,
+        "mean_centroid_error_px": null
+      }
+    }
+  ],
+  "mean_accuracy": {
+    "original": 0.77,
+    "keepout": 0.855
+  }
+}
