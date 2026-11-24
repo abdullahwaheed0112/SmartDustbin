@@ -116,11 +116,15 @@ Python, OpenCV (HSV thresholding, contours), NumPy, Pillow (GIFs), pytest. Hardw
 
 ## My role and credit
 
-This is a fork of [Fireguy1/SmartDustbin](https://github.com/Fireguy1/SmartDustbin). The original script, the robot and its Bluetooth code come from that repository, and its single original commit (`8813024`) is preserved unchanged. My work is everything after it: the module split (verified to behave identically to the original on the same inputs), the `ESP_MAC` environment variable replacing a hard-coded Bluetooth address, the simulator, the evaluation and layout analysis, the tests, and this README.
+This project began as a team project. It is a fork of [Fireguy1/SmartDustbin](https://github.com/Fireguy1/SmartDustbin), and its single original commit (`8813024`) is preserved unchanged.
+
+- **Original project, my part:** the hardware implementation (building the physical robot: ESP32, L298N motor driver, DC motors). The photos, wiring and firmware from that build are not in this repository, so they are not described here.
+- **Original project, Fireguy1's part:** the Python control script (detection, zones, Bluetooth code) in the first commit.
+- **After the fork (mine):** the module split (verified to behave identically to the original on the same inputs), the `ESP_MAC` environment variable replacing a hard-coded Bluetooth address, the simulator, the evaluation and layout analysis, the tests, and this README.
 
 ## Limitations
 
-- Nothing here was run on the real robot; speed, turn accuracy and Bluetooth behaviour are unmeasured.
+- None of the simulation, evaluation or tests here was run on the real robot; speed, turn accuracy and Bluetooth behaviour are unmeasured.
 - The evaluation uses synthetic scenes of my own design. Real lighting, shadows, camera angle and trash shapes will differ.
 - The layout analysis assumes a top-down camera and a bin about as wide as its placement box.
 - No licence file was in the original repository, so none is added here.
