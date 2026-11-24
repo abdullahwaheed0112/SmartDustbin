@@ -2,7 +2,7 @@
 
 A webcam finds a red object thrown into one of four zones and a robot bin is told to drive towards it. The original project ran on a real ESP32 robot. This version splits the script into tested modules and adds a **software simulation and evaluation harness**: on 1,200 synthetic scenes the original detector makes the right decision **77.0%** of the time on average, and **85.5%** with a one-line fix found by the harness (a red mark on the robot itself triggered the BACK zone in 100% of those scenes).
 
-> **What is and is not verified.** Everything below was run on synthetic images and a modelled robot. The code was **not** run on the physical robot, a real camera or Bluetooth for this version, and no photos or video of the hardware exist in the repository. Accuracy figures describe the code's behaviour on the scenes built here, not real-world performance.
+> **What is and is not verified.** The original project was built and tested on a physical ESP32 robot (per its authors; no photos, video or measurements are in this repository). Everything measured *in this repository* (the animations, the evaluation tables, the layout analysis) comes from synthetic images and a modelled robot, and was **not** run on the hardware. Accuracy figures describe the code's behaviour on the scenes built here, not real-world performance.
 
 ## Problem
 
@@ -118,13 +118,13 @@ Python, OpenCV (HSV thresholding, contours), NumPy, Pillow (GIFs), pytest. Hardw
 
 This project began as a team project. It is a fork of [Fireguy1/SmartDustbin](https://github.com/Fireguy1/SmartDustbin), and its single original commit (`8813024`) is preserved unchanged.
 
-- **Original project, my part:** the hardware implementation (building the physical robot: ESP32, L298N motor driver, DC motors). The photos, wiring and firmware from that build are not in this repository, so they are not described here.
+- **Original project, my part:** the hardware implementation (building the physical robot: ESP32, L298N motor driver, DC motors). I tested the whole system on the ESP32 robot; the photos, wiring, firmware and test records from that build are not in this repository, so no hardware results are reported here.
 - **Original project, Fireguy1's part:** the Python control script (detection, zones, Bluetooth code) in the first commit.
 - **After the fork (mine):** the module split (verified to behave identically to the original on the same inputs), the `ESP_MAC` environment variable replacing a hard-coded Bluetooth address, the simulator, the evaluation and layout analysis, the tests, and this README.
 
 ## Limitations
 
-- None of the simulation, evaluation or tests here was run on the real robot; speed, turn accuracy and Bluetooth behaviour are unmeasured.
+- The simulation, evaluation and tests added here were not run on the real robot, and no hardware measurements (speed, turn accuracy, Bluetooth reliability) are recorded in the repository.
 - The evaluation uses synthetic scenes of my own design. Real lighting, shadows, camera angle and trash shapes will differ.
 - The layout analysis assumes a top-down camera and a bin about as wide as its placement box.
 - No licence file was in the original repository, so none is added here.
