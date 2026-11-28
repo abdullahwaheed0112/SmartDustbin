@@ -1,8 +1,17 @@
-# SmartDustbin: a vision-guided trash bin, with a simulator that tests it without hardware
+# SmartDustbin: a bin that drives to thrown trash, now testable without hardware
 
-A webcam finds a red object thrown into one of four zones and a robot bin is told to drive towards it. The original project ran on a real ESP32 robot. This version splits the script into tested modules and adds a **software simulation and evaluation harness**: on 1,200 synthetic scenes the original detector makes the right decision **77.0%** of the time on average, and **85.5%** with a one-line fix found by the harness (a red mark on the robot itself triggered the BACK zone in 100% of those scenes).
+**A simulator and 12-condition test harness exposed a flaw where the robot reacted to itself, and a one-line fix removes it.**
 
-> **What is and is not verified.** The original project was built and tested on a physical ESP32 robot (per its authors; no photos, video or measurements are in this repository). Everything measured *in this repository* (the animations, the evaluation tables, the layout analysis) comes from synthetic images and a modelled robot, and was **not** run on the hardware. Accuracy figures describe the code's behaviour on the scenes built here, not real-world performance.
+| | |
+|---|---|
+| **Problem** | A camera-guided bin could only be tried with the physical robot, so nobody could measure when its detection fails. |
+| **Solution** | Split the script into tested modules and added a software camera, a modelled robot and an evaluation on 1,200 synthetic scenes. |
+| **Result** | **Right decisions rise from 77.0% to 85.5% on average once the robot's own body is ignored** (synthetic scenes; 89 tests). |
+| **My role** | Team project. I built and tested the physical robot; a teammate wrote the original script; the simulator and tests are my later work. |
+
+![Simulated run: the object is detected and the bin drives left](docs/demo/demo-left.gif)
+
+> **What is verified.** The original system was tested on a physical ESP32 robot (the authors' account; no recordings are in this repository). Every number and animation here comes from synthetic images and a modelled robot.
 
 ## Problem
 
@@ -67,6 +76,13 @@ Mean right-decision rate over the 12 conditions: **77.0%** original, **85.5%** w
 
 Closing the loop (steer towards the detected position until the distance is small) is the obvious next step; this repository deliberately keeps the original open-loop behaviour so the measurements describe the author's design.
 
+## Limitations
+
+- The simulation, evaluation and tests added here were not run on the real robot, and no hardware measurements (speed, turn accuracy, Bluetooth reliability) are recorded in the repository.
+- The evaluation uses synthetic scenes of my own design. Real lighting, shadows, camera angle and trash shapes will differ.
+- The layout analysis assumes a top-down camera and a bin about as wide as its placement box.
+- No licence file was in the original repository, so none is added here.
+
 ## Run it
 
 Python 3.11+ (developed on 3.15, Windows 11). No camera or robot is needed for the first three commands.
@@ -122,9 +138,3 @@ This project began as a team project. It is a fork of [Fireguy1/SmartDustbin](ht
 - **Original project, Fireguy1's part:** the Python control script (detection, zones, Bluetooth code) in the first commit.
 - **After the fork (mine):** the module split (verified to behave identically to the original on the same inputs), the `ESP_MAC` environment variable replacing a hard-coded Bluetooth address, the simulator, the evaluation and layout analysis, the tests, and this README.
 
-## Limitations
-
-- The simulation, evaluation and tests added here were not run on the real robot, and no hardware measurements (speed, turn accuracy, Bluetooth reliability) are recorded in the repository.
-- The evaluation uses synthetic scenes of my own design. Real lighting, shadows, camera angle and trash shapes will differ.
-- The layout analysis assumes a top-down camera and a bin about as wide as its placement box.
-- No licence file was in the original repository, so none is added here.
